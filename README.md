@@ -1,7 +1,4 @@
-snapshotter
-===========
-
-Script for creating and keeping an history of snapshots in a <b>btrfs</b> filesystem that follows an exponential (or custom) concentration over time.
+This Script for creates and rotates an history of snapshots in a <b>btrfs</b> filesystem that follows an exponential (or custom) concentration over time.
 
 
 Prerequisites
