@@ -1,7 +1,7 @@
 snapshotter
 ===========
 
-Script for creating and keeping an history of snapshots in btrfs that follows a exponential (or custom) concentration over time.
+Script for creating and keeping an history of snapshots in <b>btrfs</b> that follows a exponential (or custom) concentration over time.
 
 
 Usage
@@ -32,24 +32,28 @@ An so on.
 
 Options
 -------
-    -d <n>    --days <n>     :REQUIRED. Maximum amounts of days to keep snapshots for. Any
+    -d <n>    --days <n>     : REQUIRED. Maximum amounts of days to keep snapshots for. Any
                                  snapshot older than this will be deleted regardless of score
-    -n <n>    --maxqty <n>   :REQUIRED. Maximum amount of snapshots to keep. This parameter 
+    -n <n>    --maxqty <n>   : REQUIRED. Maximum amount of snapshots to keep. This parameter 
                                  (along with --days and the frequency of snapshots) determines the
                                  concentration of snapshots.
-    -c <src>                 :Creates a new snapshot using the provided subvolume as source.
-    -C <src>                 :Like -c, but inhibits deletion after the creation of the snapshot.
-    -r        --readonly     :Creates a read-only snapshot. Relevant only if used with -c or -C.
-    -l <str>  --label=<str>  :Defines a label to be used both for creating and filtering snapshots.
-    -k <float>               :Parameter used to alter the score formula. Positives values 
+    -c <src>                 : Creates a new snapshot using the provided subvolume as source.
+    -C <src>                 : Like -c, but inhibits deletion after the creation of the snapshot.
+    -r        --readonly     : Creates a read-only snapshot. Relevant only if used with -c or -C.
+    -l <str>  --label=<str>  : Defines a label to be used both for creating and filtering snapshots.
+    -k <float>               : Parameter used to alter the score formula. Positives values 
                                  concentrates on recent snapshots, negative values even
                                  out the distribution. Defaults to 0.
-    -b <...>  --datef=<...>  :Alters the datetime format. Read the FORMAT section in the "date"
+    -b <...>  --datef=<...>  : Alters the datetime format. Read the FORMAT section in the "date"
                                  manpage. The default datetime format is "%Y.%m.%d_%H.%M"
-    -f <frm>  --formula=".." :Used to enter a custom distribution formula that overwrites the
+    -f <frm>  --formula=".." : Used to enter a custom distribution formula that overwrites the
                                  default "x**(1.2**(k-1))"
-    -s        --sym          :Sym mode. Calculates the outcome and prints the distribution after 
+    -s        --sym          : Sym mode. Calculates the outcome and prints the distribution after 
                                  <days> have passed. assumes 1 snapshot/hour.
-    -q        --quiet        :Quiet mode. Suppress non-error messages.
+    -q        --quiet        : Quiet mode. Suppress non-error messages.
 
 
+Prerequisites
+-------------
+
+Just Python 2.x. No external module is needed.
