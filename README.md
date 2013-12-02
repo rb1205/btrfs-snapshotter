@@ -26,7 +26,7 @@ Example:
 
 The above command will create a snapshot of subvolume at the destination path with the current ISO formatted date as name. By calling it on regular basis (eg: cron.hourly) the script will start deleting snapshot when they're more than 50 starting from the least recent inward following an exponential score system, so that the resulting snapshot will cover all the given timeframe (30 days), but increasing the resolution the closer the date is.
 
-Here's the resulting distribution returned by the above command with the --sym flag to simulate the system:
+Here's the resulting distribution that the above command would generate after <days> have passed. Use the --sym flag to get this, so you can tune your parameters.
 
 T-0 day (today): 15 snapshots
 
