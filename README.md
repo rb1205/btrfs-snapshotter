@@ -1,19 +1,31 @@
 snapshotter
 ===========
 
-Script for creating and keeping an history of snapshots in <b>btrfs</b> that follows a exponential (or custom) concentration over time.
+Script for creating and keeping an history of snapshots in a <b>btrfs</b> filesystem that follows an exponential (or custom) concentration over time.
+
+
+Prerequisites
+-------------
+
+Just Python 2.x. No external module is needed.
+
+
+Installation
+------------
+
+ # cp snapshotter.py /usr/sbin/
 
 
 Usage
 -----
 
-    ./snapshotter.py --days=<n> --maxqty=<n> [<options>] <dest_dir>
+    snapshotter.py --days=<n> --maxqty=<n> [<options>] <dest_dir>
 
 <i>--days</i> and <i>--maxqty</i> are both required options
 
 Example:
 
-    ./snapshotter.py --days=30 --maxqty=50 -c /path/to/subvolume /path/to/snapshot/directory
+    snapshotter.py --days=30 --maxqty=50 -c /path/to/subvolume /path/to/snapshot/directory
 
 The above command will create a snapshot of subvolume at the destination path with the current ISO formatted date as name. By calling it on regular basis (eg: cron.hourly) the script will start deleting snapshot when they're more than 50 starting from the least recent inward following an exponential score system, so that the resulting snapshot will cover all the given timeframe (30 days), but increasing the resolution the closer the date is.
 
@@ -52,8 +64,3 @@ Options
                                  <days> have passed. assumes 1 snapshot/hour.
     -q        --quiet        : Quiet mode. Suppress non-error messages.
 
-
-Prerequisites
--------------
-
-Just Python 2.x. No external module is needed.
