@@ -215,23 +215,26 @@ def main():
 	_MaxQty=False
 	sym=False
 	
+	args_in=[]; 
+	for ar in sys.argv[1:]: args_in.append(ar.strip()) 
 	try:                                
-		opts, args = getopt.gnu_getopt(sys.argv[1:], "hqsd:n:f:k:l:c:C:r", ["help","sym","formula=","days=","maxqty=","label=","readonly"]) 
+		opts, args = getopt.gnu_getopt(args_in, "hqsd:n:f:k:l:c:C:r", ["help","sym","formula=","days=","maxqty=","label=","readonly"]) 
 	except getopt.GetoptError, err:  
 		print str(err)
 		usage(exit=2)
-	
+	#print opts
+
 	try:
 		for opt, arg in opts:
 			if opt in ("-h", "--help"): usage(exit=1)
 			if opt in ("-q", "--quiet"): _QuietMode=True
 			elif opt in ("-s","--sym"): sym=1
-			elif opt in ("-f","--formula"): Formula=arg
+			elif opt in ("-f","--formula"): Formula=arg.strip()
 			elif opt in ("-d","--days"): _Days=int(arg)
 			elif opt in ("-n","--maxqty"):
 				_MaxQty=int(arg)
 				if _MaxQty<2: raise Exception, "MaxQty must be at least 2"
-			elif opt in ("-l","--label"): _Label=arg
+			elif opt in ("-l","--label"): _Label=arg.strip()
 			elif opt in ("-c","--create"): 
 				_CreateSnapshot=arg.strip()
 			elif opt == "-C":
@@ -244,7 +247,8 @@ def main():
 		print str(err)
 		print ""
 		usage(exit=2)
-	
+
+	#sys.exit(0)
 	if _CreateSnapshot:
 		if not os.path.isdir(_CreateSnapshot):
 			print "Source directory "+ _CreateSnapshot+" does not exist"
