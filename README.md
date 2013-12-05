@@ -4,9 +4,9 @@ This Script creates and rotates an history of snapshots in a <b>btrfs</b> filesy
 Prerequisites
 -------------
 
-One or more btrfs filesystems
-btrfs-tools in your path
-Python 2.x. No additional python module is needed.
+* One or more btrfs filesystems
+* Python 2.x. No additional python module is needed.
+* btrfs-tools in your path
 
 
 Installation
