@@ -1,10 +1,12 @@
-This Script for creates and rotates an history of snapshots in a <b>btrfs</b> filesystem that follows an exponential (or custom) concentration over time.
+This Script creates and rotates an history of snapshots in a <b>btrfs</b> filesystem that follows an exponential (or custom) concentration over time.
 
 
 Prerequisites
 -------------
 
-Just Python 2.x. No external module is needed.
+One or more btrfs filesystems
+btrfs-tools in your path
+Python 2.x. No additional python module is needed.
 
 
 Installation
