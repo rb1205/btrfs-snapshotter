@@ -41,12 +41,12 @@ An so on.
 
 Operations
 ----------
-  -c <src>                   : Creates a new snapshot using the provided subvolume as source.
-  -C <src>                   : Like -c, but inhibits deletion after creation of the snapshot.
-  -s          --sym          : Sym mode. Calculates the outcome and prints the distribution
+    -c <src>                   : Creates a new snapshot using the provided subvolume as source.
+    -C <src>                   : Like -c, but inhibits deletion after creation of the snapshot.
+    -s          --sym          : Sym mode. Calculates the outcome and prints the distribution
                                  after <days> have passed. assumes 1 snapshot/hour. it doesn't
                                  need dest_dir to perform the symulation.
-  (none)                     : Opposite of -C, deletes any extra snapshot without creating any new.
+    (none)                     : Opposite of -C, deletes any extra snapshot without creating any new.
 
 
 For any operation other than -C, both --days and --maxqty are required options.
