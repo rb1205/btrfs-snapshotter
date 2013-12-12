@@ -172,39 +172,63 @@ def process_directory(dir,maxnum,maxdays,Label=""):
 	array.RemoveOtherThan(maxnum)
 		
 	
-	
+										
 def usage(exit=False):
 	A='\
-snapshotter is a script that takes and mantains a snapshot directory where old entries get\n\
-deleted more and more as time passes.\n\
-You can call this script withe the -c/-C flags to create a snapshot, but you can use your own\n\
-method to create snapshots as long as you follow the same naming pattern. \n\
+snapshotter is a script that takes and mantains a snapshot directory where old\n\
+entries get deleted more and more as time passes.\n\
+You can call this script withe the -c/-C flags to create a snapshot, but you can\n\
+use your own method to create snapshots as long as you follow the same naming \n\
+pattern.\n\
 \n\
 Usage:\n\
-snapshotter --days=<n> --maxqty=<n> [<options>] <dest_dir>\n\
+snapshotter.py [<operation>] [<options>] <dest_dir>\n\
 \n\
---days and --maxqty are required options\n\
+Operations:\n\
+  -c <src>      :Creates a new snapshot using the provided subvolume as source.\n\
+  -C <src>      :Like -c, but inhibits deletion after creation of the snapshot.\n\
+  -s     --sym  :Sym mode. Calculates the outcome and prints the distribution\n\
+		  after <days> have passed. assumes 1 snapshot/hour. it doesn\'t
+                  need dest_dir to perform the symulation.\n\
+  (none)	:Opposite of -C, deletes any extra snapshot without creating any\n\
+\n\
+For any operation other than -C, both --days and --maxqty are required options.\n\
 \n\
 Options:\n\
-    -d <n>    --days <n>     :REQUIRED. Maximum amounts of days to keep snapshots for. Any \n\
-                                 snapshot older than this will be deleted regardless of score\n\
-    -n <n>    --maxqty <n>   :REQUIRED. Maximum amount of snapshots to keep. This parameter \n\
-                                 (along with --days and the frequency of snapshots) determines the\n\
-                                 concentration of snapshots.\n\
-    -c <src>                 :Creates a new snapshot using the provided subvolume as source.\n\
-    -C <src>                 :Like -c, but inhibits deletion after the creation of the snapshot.\n\
-    -r        --readonly     :Creates a read-only snapshot. Relevant only if used with -c or -C.\n\
-    -l <str>  --label=<str>  :Defines a label to be used both for creating and filtering snapshots.\n\
-    -k <float>               :Parameter used to alter the score formula. Positives values \n\
-                                 concentrates on recent snapshots, negative values even\n\
-                                 out the distribution. Defaults to 0.\n\
-    -b <...>  --datef=<...>  :Alters the datetime format. Read the FORMAT section in the "date"\n\
-                                 manpage. The default datetime format is "'+_DefaultDateFormat+'"\n\
-    -f <frm>  --formula=".." :Used to enter a custom distribution formula that overwrites the\n\
-                                 default "'+_DefaultFormula+'"\n\
-    -s        --sym          :Sym mode. Calculates the outcome and prints the distribution after \n\
-                                 <days> have passed. assumes 1 snapshot/hour.\n\
-    -q        --quiet        :Quiet mode. Suppress non-error messages.\n\
+  -d <n>    --days <n>     :REQUIRED. Maximum amounts of days to keep snapshots\n\
+			      for. Any snapshot older than this will be deleted\n\
+                              regardless of score\n\
+  -n <n>    --maxqty <n>   :REQUIRED. Maximum amount of snapshots to keep. \n\
+                              This parameter (along with --days and the \n\
+                              frequency of snapshots) determines the \n\
+                              concentration of snapshots.\n\
+  -c <src>                 :Creates a new snapshot using the provided subvolume \n\
+                              as source.\n\
+  -C <src>                 :Like -c, but inhibits deletion after the creation of \n\
+                              the snapshot.\n\
+  -r        --readonly     :Creates a read-only snapshot. Relevant only if used \n\
+                              with -c or -C.\n\
+  -l <str>  --label=<str>  :Defines a label to be used both for creating and \n\
+                              filtering snapshots.\n\
+  -k <float>               :Parameter used to alter the score formula. Positives\n\
+                               values concentrates on recent snapshots, negative\n\
+                               values even out the distribution. Defaults to 0.\n\
+  -b <...>  --datef=<...>  :Alters the datetime format. Read the FORMAT section \n\
+                               in the "date" manpage. The default datetime \n\
+                               format is "'+_DefaultDateFormat+'"\n\
+  -f <frm>  --formula=".." :Used to enter a custom distribution formula that \n\
+                               overwrites the default "'+_DefaultFormula+'"\n\
+  -s        --sym          :Sym mode. Calculates the outcome and prints the\n\
+			       distribution after <days> have passed. Assumes\n\
+                               1 snapshot/hour.\n\
+  -q        --quiet        :Quiet mode. Suppress non-error messages.\n\
+\n\
+Examples:\n\
+  snapshotter.py -d 7 -n 50 -c /mnt/mysubvolume /mnt/mysnapshots\n\
+\n\
+  snapshotter.py -C /mnt/subvolume -r /mnt/readonly_mysnapshots\n\
+\n\
+  snapshotter.py -s -d 7 -n 50\n\
 '
 	print A
 	if exit: sys.exit(exit)
