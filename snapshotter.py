@@ -188,7 +188,7 @@ Operations:\n\
   -c <src>      :Creates a new snapshot using the provided subvolume as source.\n\
   -C <src>      :Like -c, but inhibits deletion after creation of the snapshot.\n\
   -s     --sym  :Sym mode. Calculates the outcome and prints the distribution\n\
-		  after <days> have passed. assumes 1 snapshot/hour. it doesn\'t
+		  after <days> have passed. assumes 1 snapshot/hour. it doesn\'t\n\
                   need dest_dir to perform the symulation.\n\
   (none)	:Opposite of -C, deletes any extra snapshot without creating any\n\
 \n\
