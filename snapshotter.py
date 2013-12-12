@@ -202,10 +202,6 @@ Options:\n\
                               This parameter (along with --days and the \n\
                               frequency of snapshots) determines the \n\
                               concentration of snapshots.\n\
-  -c <src>                 :Creates a new snapshot using the provided subvolume \n\
-                              as source.\n\
-  -C <src>                 :Like -c, but inhibits deletion after the creation of \n\
-                              the snapshot.\n\
   -r        --readonly     :Creates a read-only snapshot. Relevant only if used \n\
                               with -c or -C.\n\
   -l <str>  --label=<str>  :Defines a label to be used both for creating and \n\
@@ -218,9 +214,6 @@ Options:\n\
                                format is "'+_DefaultDateFormat+'"\n\
   -f <frm>  --formula=".." :Used to enter a custom distribution formula that \n\
                                overwrites the default "'+_DefaultFormula+'"\n\
-  -s        --sym          :Sym mode. Calculates the outcome and prints the\n\
-			       distribution after <days> have passed. Assumes\n\
-                               1 snapshot/hour.\n\
   -q        --quiet        :Quiet mode. Suppress non-error messages.\n\
 \n\
 Examples:\n\
