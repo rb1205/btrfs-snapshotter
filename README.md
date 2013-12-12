@@ -45,7 +45,7 @@ Operations
     -C <src>                   : Like -c, but inhibits deletion after creation of the snapshot.
     -s          --sym          : Sym mode. Calculates the outcome and prints the distribution
                                  after <days> have passed. assumes 1 snapshot/hour. it doesn't
-                                 need dest_dir to perform the symulation.
+                                 need dest_dir to perform the simulation.
     (none)                     : Opposite of -C, deletes any extra snapshot without creating any new.
 
 
